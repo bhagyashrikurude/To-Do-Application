@@ -1,0 +1,68 @@
+<div class="container text-center">
+  <div class="card m-5">
+    <div class="m-3" [formGroup]="todoForm">
+      <input type="text" placeholder="Enter a Task" formControlName="title" />
+      <button
+        type="button"
+        class="btn btn-sm p-0 m-0 px-2 ms-3"
+        (click)="addTask()"
+      >
+        <i class="fa-solid fa-square-plus icon-size"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card m-5 example-container">
+      <h4 class="head-title">
+        To-Do<span *ngIf="tasks.length > 0"> : {{ tasks.length }}</span>
+      </h4>
+      <div class="example-box bg" *ngFor="let task of tasks; let i = index">
+        {{ task.title }}
+        <div class="box">
+          <button type="button" class="btn btn-light btn-sm rounded" (click)="editTask()">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm rounded" (click)="deleteTask('todo', i)">
+            <i class="fa-solid fa-trash text-danger"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card m-5">
+      <h4 class="head-title">
+        In Progress<span *ngIf="inprogress.length > 0">
+          : {{ inprogress.length }}</span
+        >
+      </h4>
+      <div class="example-box bg" *ngFor="let item of inprogress; let i = index">
+        {{ item.title }}
+        <div class="box">
+          <button type="button" class="btn btn-light btn-sm rounded" (click)="editTask()">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm rounded" (click)="deleteTask('progress', i)">
+            <i class="fa-solid fa-trash text-danger"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card m-5">
+      <h4 class="head-title">
+        Completed<span *ngIf="completed.length > 0">
+          : {{ completed.length }}</span
+        >
+      </h4>
+      <div class="example-box bg" *ngFor="let item of completed; let i = index">
+        {{ item.title }}
+        <div class="box">
+          <button type="button" class="btn btn-light btn-sm rounded" (click)="editTask()">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm rounded" (click)="deleteTask('completed', i)">
+            <i class="fa-solid fa-trash text-danger"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
